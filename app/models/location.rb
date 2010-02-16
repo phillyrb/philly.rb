@@ -3,6 +3,10 @@ class Location < ActiveRecord::Base
   validates_presence_of :name, :address_1, :city, :state, :zip
   has_many :events
 
+  def map_query
+    read_attribute(:map_query) || "#{address_1} #{zip}"
+  end
+
   def map_url
     "http://maps.google.com/maps?q=" + CGI.escape(map_query)
   end
