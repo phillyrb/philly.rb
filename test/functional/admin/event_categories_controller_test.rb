@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class EventCategoriesControllerTest < ActionController::TestCase
+class Admin::EventCategoriesControllerTest < ActionController::TestCase
   def test_should_get_index
     get :index
     assert_response :success
@@ -14,32 +14,32 @@ class EventCategoriesControllerTest < ActionController::TestCase
 
   def test_should_create_event_category
     assert_difference('EventCategory.count') do
-      post :create, :event_category => { }
+      post :create, :event_category => { :name => "hack night" }
     end
 
-    assert_redirected_to event_category_path(assigns(:event_category))
+    assert_redirected_to admin_event_category_path(assigns(:event_category))
   end
 
   def test_should_show_event_category
-    get :show, :id => event_categories(:one).id
+    get :show, :id => event_categories(:pubnite).id
     assert_response :success
   end
 
   def test_should_get_edit
-    get :edit, :id => event_categories(:one).id
+    get :edit, :id => event_categories(:pubnite).id
     assert_response :success
   end
 
   def test_should_update_event_category
-    put :update, :id => event_categories(:one).id, :event_category => { }
-    assert_redirected_to event_category_path(assigns(:event_category))
+    put :update, :id => event_categories(:pubnite).id, :event_category => { }
+    assert_redirected_to admin_event_category_path(assigns(:event_category))
   end
 
   def test_should_destroy_event_category
     assert_difference('EventCategory.count', -1) do
-      delete :destroy, :id => event_categories(:one).id
+      delete :destroy, :id => event_categories(:pubnite).id
     end
 
-    assert_redirected_to event_categories_path
+    assert_redirected_to admin_event_categories_path
   end
 end
