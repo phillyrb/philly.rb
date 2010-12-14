@@ -12,6 +12,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :events
   end
 
+  map.year_2010 '2010', :controller => 'page', :action => 'year_2010'
+
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

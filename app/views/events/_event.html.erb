@@ -1,0 +1,15 @@
+<% div_for(event) do %>
+    <p class="title"><%= link_to event.name, event_path(event) %></p>
+    <p><%= time_range(event.starts_at, event.ends_at) %></p>
+	<p><%= textilize event.description %></p>
+  <% if !no_address %>
+  	<p class="address"><a href="<%=h(event.location.map_url)%>">
+          <%= h event.location.name %><br />
+  		<%= h event.location.address_1 %><br />
+  		<%= h(event.location.address_2) + '<br />' if event.location.address_2 %>
+  		<%= h event.location.city %>, <%= h event.location.state %> <%= h event.location.zip %>
+  	</a></p>
+  	<p><em><%= textilize event.location.description %></em></p>
+    <%= link_to image_tag(event.location.image_url), event.location.map_url %>
+  <% end %>
+<% end %>
