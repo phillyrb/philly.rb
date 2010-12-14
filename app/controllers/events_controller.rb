@@ -8,9 +8,18 @@ class EventsController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @events }
       format.ics do
-        @cal = Icalendar::Calendar.new
-        @events.each { |e| @cal.add(e.to_ical) }
-        render :text => @cal.to_ical
+        ical = RiCal.Calendar do |cal|
+          @events.each do |event|
+            cal.event do |e|
+              e.summary     "Philly.rb: #{event.name}"
+              e.description event.description
+              e.dtstart     event.starts_at.utc.to_datetime
+              e.dtend       event.ends_at.utc.to_datetime
+              e.location    event.location.name
+            end
+          end
+        end
+        render :text => ical.to_s
       end
     end
   end
