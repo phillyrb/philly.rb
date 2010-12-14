@@ -46,11 +46,6 @@
   </div>
   
   <%= yield :back_matter %>
-
-  <div id="footer">
-    <p id="legal">Copyright &copy; <%= Time.now.year %> Philly.rb. All Rights Reserved.</p>
-    <p>This site was created by Philly.rb members and is hosted by <a href="http://www.kineticweb.com">Kinetic Web Solutions</a>.</p>
-  </div>
 </div>
 <%= javascript_include_tag 'jquery-1.4.min', 'twitter.js' %>
 <%= javascript_include_tag "http://twitter.com/statuses/user_timeline/#{twitter_name}.json?callback=updateTweets&count=6" %>
