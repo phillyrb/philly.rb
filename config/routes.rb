@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :events
   end
 
-  map.year_2010 '2010', :controller => 'page', :action => 'year_2010'
+  map.yearly ':year', :controller => 'events', :action => 'yearly', :conditions => { :year => /\d{4}/ }
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

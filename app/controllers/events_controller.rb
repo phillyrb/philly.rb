@@ -34,4 +34,11 @@ class EventsController < ApplicationController
       format.xml  { render :xml => @event }
     end
   end
+
+  def yearly
+    @year = params[:year].to_i
+    @no_address = true
+    @business = EventCategory.find(:first, :conditions => { :name => "Business Meeting" })
+    @events = Event.find(:all, :conditions => ["starts_at >= '#{@year}-01-01' AND starts_at < '#{@year + 1}-01-01' AND event_category_id = ?", @business.id])
+  end
 end
