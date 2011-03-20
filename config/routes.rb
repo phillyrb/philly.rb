@@ -9,11 +9,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.root :controller => 'locations'
     admin.resources :locations
     admin.resources :event_categories
-    admin.resources :events
+    admin.resources :events, :member => { :copy => :post }
   end
 
   map.yearly ':year', :controller => 'events', :action => 'yearly', :conditions => { :year => /\d{4}/ }
-
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
 end

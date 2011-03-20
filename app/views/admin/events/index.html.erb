@@ -20,6 +20,7 @@
     <td><%=h event.event_category_id %></td>
     <td><%= link_to 'Show', admin_event_path(event) %></td>
     <td><%= link_to 'Edit', edit_admin_event_path(event) %></td>
+    <td><%= link_to 'Copy', copy_admin_event_path(event), :method => :post %></td>
     <td><%= link_to 'Destroy', admin_event_path(event), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

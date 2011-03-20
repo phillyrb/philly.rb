@@ -57,6 +57,14 @@ class Admin::EventsController < AdministrativeController
     end
   end
 
+  def copy
+    setup_variables
+    @event = Event.find(params[:id])
+    @new_event = Event.create(@event.attributes)
+
+    redirect_to edit_admin_event_path(@new_event)
+  end
+
   # PUT /events/1
   # PUT /events/1.xml
   def update
