@@ -2,7 +2,7 @@ class Admin::EventsController < AdministrativeController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.find(:all)
+    @events = Event.find(:all).order(:starts_at)
 
     respond_to do |format|
       format.html # index.html.erb
