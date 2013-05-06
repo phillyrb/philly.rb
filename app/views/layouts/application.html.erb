@@ -7,6 +7,9 @@
 </head>
 <body id="<%= action_body_id %>">
 <div id="wrapper">
+  <div class="alert">
+   Events are now posted on our meetup page. Please <a href="http://www.meetup.com/phillyrb/">click here</a> to go to our meetup page.
+  </div>
   <div id="page">
     <div id="header">
       <div id="logo">
@@ -38,13 +41,13 @@
         </p>
       </div>
     </div>
-    
+
     <div id="content">
       <%= yield %>
     </div>
     <div class="clear">&nbsp;</div>
   </div>
-  
+
   <%= yield :back_matter %>
 </div>
 <%= javascript_include_tag 'jquery-1.4.min', 'twitter.js' %>
